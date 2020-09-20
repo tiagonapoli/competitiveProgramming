@@ -18,7 +18,7 @@ set mouse=a
 
 set cindent
 
-au BufNewFile *.cpp 0r ~/Documents/maratona/template.cpp
+au BufNewFile *.cpp 0r ~/Documents/competitiveProgramming/template.cpp
 
 set ai si noet ts=4 sw=4 sta sm nu rnu
 inoremap {<CR> {<CR>}<Esc>O
