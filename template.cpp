@@ -8,10 +8,15 @@
 #define ll long long
 #define pii pair<int,int>
 
-bool debug = 1;
+#ifdef DEBUG
+	const bool debug = 1;
+#else
+	const bool debug = 0;
+#endif
+
 #define prin(a) if(debug) cout << #a << " = " << (a) << endl
 #define prinpar(a) if(debug) printf("%d/%d\n", (a.fi), (a.se))
-#define separa() if(debug) cout << endl
+#define sep() if(debug) cout << endl
 
 const ll MOD = 1000000007;
 const double PI = acos(-1.0);
