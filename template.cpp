@@ -1,7 +1,6 @@
 #include "bits/stdc++.h"
-#define FILE_IN freopen("in", "r", stdin);
-#define FILE_OUT freopen("out", "w", stdout);
-#define FOR(i,a,b) for(int i=(a);i<(b);i++)
+#define For(i,a,b) for(int i=(a);i<(b);i++)
+#define all(x) (x).begin(), (x).end()
 #define pb push_back
 #define fi first
 #define se second
@@ -22,7 +21,10 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 using namespace std;
+int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
+
+
 
 
 int main () {
