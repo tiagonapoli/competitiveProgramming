@@ -15,7 +15,8 @@
 
 #define prin(a) if(debug) cout << #a << " = " << (a) << endl
 #define prinpar(a) if(debug) printf("%d/%d\n", (a.fi), (a.se))
-#define sep() if(debug) cout << endl
+#define sepd() if(debug) cout << endl
+#define sep() printf("\n");
 
 const ll MOD = 1000000007;
 const double PI = acos(-1.0);
