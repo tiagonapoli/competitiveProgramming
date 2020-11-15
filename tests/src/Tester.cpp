@@ -13,7 +13,7 @@ void compile(string fileType, string sourcePath, string execPath) {
 
 void prepare(int argc, char *argv[]) {
 	if(argc < 4) {
-		printf("Usage ./Tester GeneratorPath SolverPath ProgramToTest [TestMod");
+		printf("Usage ./Tester GeneratorPath SolverPath ProgramToTest [TestMod\n");
 		exit(0);
 	}
 
@@ -24,9 +24,20 @@ void prepare(int argc, char *argv[]) {
 }
 
 void runTest() {
-	system("./generator.tmp > ./files/input.tmp");
-	system("./solver.tmp < ./files/input.tmp > ./files/answer.tmp");
-	system("./program.tmp < ./files/input.tmp > ./files/output.tmp");
+	if(system("./generator.tmp > ./files/input.tmp")) {
+    printf("Generator execution failed");
+    exit(1);
+  }
+
+	if(system("./solver.tmp < ./files/input.tmp > ./files/answer.tmp")) {
+    printf("Solver execution failed");
+    exit(1);
+  }
+
+	if(system("./program.tmp < ./files/input.tmp > ./files/output.tmp")) {
+    printf("Target execution failed");
+    exit(1);
+  }
 }
 
 string readFile(string filename) {
