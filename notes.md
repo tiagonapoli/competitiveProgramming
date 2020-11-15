@@ -14,6 +14,17 @@
 
 ### d(b,v) <= d(b,a) + d(a,v)
 
+# Properties
+
+### ka % kb = k * (a % b)
+
+```
+r1 = ka % kb => ka = x * kb + r1, r1 < kb
+r = a % b => a = y * b + r, r < b
+```
+There exists only one pair `r1`, `x` that satisfies the first equation,
+and we can check that `r1 = k*r` and `x = y` satisfies.
+
 # Misc
 
 ## Target position array
