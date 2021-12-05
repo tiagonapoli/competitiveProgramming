@@ -36,9 +36,27 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		string s;
+		cin >> s;
+		for(int i=0;i<n;i++) {
+			if(s[i] == 'U') {
+				s[i] = 'D';
+			} else if(s[i] == 'D') {
+				s[i] = 'U';
+			}
+		}
+
+		cout << s << "\n";
+		sep();
+	}
 
 	return 0;
 
 }
+
 
 

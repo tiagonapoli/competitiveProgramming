@@ -33,12 +33,62 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+ll lcm(ll a, ll b) {
+	return a / __gcd(a,b) * b;
+}
+
+ll calc(ll n) {
+
+	ll r = 0;
+	r += 2 * ((n + 1)/2);
+	r %= MOD;
+	ll res = n - (n+1)/2;
+
+	ll a;
+	a = 2;
+	ll x = 3;
+
+	while(res > 0) {
+		if(a % x == 0) {
+			x++;
+			continue;
+		}
+		
+		prin(res);
+		prin(x);
+		prin(a);
+
+		ll nxt = lcm(a,x);
+		prin(nxt);
+
+		ll add = res - (n/nxt);
+		prin(add);
+		sepd();
+
+		res -= add;
+		r += add * x;
+		r %= MOD;
+		a = lcm(a,x);
+		x++;
+	}
+
+	return r;
+}
+
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		ll n;
+		cin >> n;
+		cout << calc(n) << "\n";
+	}
 
 	return 0;
 
 }
+
 
 

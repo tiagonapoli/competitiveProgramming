@@ -33,12 +33,29 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+ll v[N];
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		for(int i=0;i<n;i++) {
+			v[i] = nxt();
+		}
+
+		ll maxi = 0;
+		for(int i=0;i<n-1;i++) {
+			maxi = max(maxi, v[i] * v[i+1]);
+		}
+
+		printf("%lld\n", maxi);
+	}
 
 	return 0;
 
 }
+
 
 

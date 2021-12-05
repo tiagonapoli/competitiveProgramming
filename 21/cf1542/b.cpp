@@ -36,9 +36,44 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		ll n = nxt();
+		ll a = nxt();
+		ll b = nxt();
+
+		if(b == 1) {
+			printf("Yes\n");
+			continue;
+		}
+
+		if(a == 1) {
+			printf("%s\n", n % b == 1 ? "Yes" : "No");
+			continue;
+		}
+
+		ll x = 1;
+		while(x <= n) {
+			prin(x);
+			prin(x%b);
+			prin(n%b);
+			sepd();
+			if(x % b == n % b) {
+				printf("Yes\n");
+				goto fini;
+			}
+
+			x *= a;
+		}
+
+		printf("No\n");
+		fini:;
+	}
 
 	return 0;
 
 }
+
 
 

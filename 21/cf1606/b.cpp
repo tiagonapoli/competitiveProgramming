@@ -35,10 +35,33 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 
 int main () {
+	ll n, k;
+	int t;
 
+	t = nxt();
+	while(t--) {
+		cin >> n >> k;
+
+		ll r = 0;
+		ll now = 1;
+		while(now < n && now < k) {
+			now *= 2;
+			r++;
+		}
+
+		prin(now);
+		prin(r);
+
+		r += (n - now + k - 1)/k;
+
+		printf("%lld\n", r);
+
+	}
+	
 
 	return 0;
 
 }
+
 
 

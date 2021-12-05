@@ -31,14 +31,44 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-#define N 100100
+#define N 300100
 
+int v[N];
+int ord[N];
+map<int, int> pos;
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+		int k = nxt();
+		pos.clear();
+
+		for(int i=0;i<n;i++) {
+			v[i] = nxt();
+			ord[i] = v[i];
+		}
+
+		sort(ord, ord+n);
+		for(int i=0;i<n;i++) {
+			pos[ord[i]] = i;
+		}
+
+		int credits = 0;
+		for(int i=1;i<n;i++) {
+			if(pos[v[i-1]] == pos[v[i]] - 1) credits++;
+		}
+
+		prin(credits);
+		if(k >= n - credits) {
+			printf("YES\n");
+		} else printf("NO\n");
+	}
 
 	return 0;
 
 }
+
 
 

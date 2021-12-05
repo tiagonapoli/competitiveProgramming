@@ -33,12 +33,39 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+bool inter(int x1, int y1, int x2, int y2) {
+	if(x1 > x2) {
+		swap(x1, x2);
+		swap(y1, y2);
+	}
+
+	if(debug) printf("\n%d %d %d %d\n", x1, y1, x2, y2);
+
+	if(y1 >= x2) return true;
+	return false;
+}
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int a, b, c ,d;
+		
+		int n = nxt();
+		a = nxt();
+		b = nxt();
+		c = nxt();
+		d = nxt();
+
+		if(inter(n * (a - b), n * (a + b), c - d, c + d)) {
+			printf("Yes\n");
+		} else printf("No\n");
+	}
 
 	return 0;
 
 }
+
 
 

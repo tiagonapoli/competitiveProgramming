@@ -36,9 +36,18 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+		int m = nxt();
+		int a = nxt();
+		int b = nxt();
+		printf("%d %d %d %d\n", 1 ,1, n, m);
+	}
 
 	return 0;
 
 }
+
 
 

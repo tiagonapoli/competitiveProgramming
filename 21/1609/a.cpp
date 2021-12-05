@@ -33,12 +33,42 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+ll v[N];
 
 int main () {
+
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+		for(int i=0;i<n;i++) v[i] = nxt();
+
+		ll r = 0;
+
+		int x = 0;
+		for(int i=0;i<n;i++) {
+			while(v[i] % 2 == 0) {
+				x++;
+				v[i] /= 2;			
+			}
+		}
+
+		sort(v, v+n);
+		while(x--) {
+			v[n-1] *= 2;
+		}
+
+		for(int i=0;i<n;i++) {
+			r += v[i];
+		}
+
+
+		printf("%lld\n", r);
+	}
 
 
 	return 0;
 
 }
+
 
 

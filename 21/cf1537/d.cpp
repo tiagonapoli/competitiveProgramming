@@ -33,12 +33,36 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+int pot2[32];
 
 int main () {
 
+	pot2[0] = 1;
+	for(int i=1;i<=30;i++) {
+		pot2[i] = pot2[i-1] * 2;	
+	}
+
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+		if(n % 2 == 1) {
+			printf("Bob\n");
+		} else if(__builtin_popcount(n) == 1) {
+			int i = 0;
+			while(n > 1) {
+				n /= 2;
+				i++;
+			}
+
+			if(i % 2 == 1) {
+				printf("Bob\n");
+			} else printf("Alice\n");
+		} else printf("Alice\n");
+	}
 
 	return 0;
 
 }
+
 
 

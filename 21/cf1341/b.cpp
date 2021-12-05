@@ -31,14 +31,53 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-#define N 100100
+#define N 200100
 
+int v[N];
+bool peak[N];
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		int k = nxt();
+
+		for(int i=0;i<n;i++) {
+			v[i] = nxt();
+		}
+
+		for(int i=0;i<n;i++) peak[i] = 0;
+
+		for(int i=1;i<n-1;i++) {
+			if(v[i-1] < v[i] && v[i] > v[i+1]) {
+				peak[i] = 1;
+			}
+		}
+
+		int r = 0;
+		for(int i=1;i<k-1;i++) {
+			r += peak[i];
+		}
+
+		int l = 0;
+		int res = r;
+		for(int i=k;i<n;i++) {
+			r -= peak[i-k+1];
+			r += peak[i-1];
+			if(r > res) {
+				res = r;
+				l = i-k+1;
+			}
+		}
+
+		printf("%d %d\n", res + 1, l + 1);
+	}
 
 	return 0;
 
 }
+
 
 

@@ -36,9 +36,29 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		string s;
+		cin >> s;
+
+		int pairs = 0;
+		for(int i=0;i<s.size()-1;i++) {
+			if(s[i] != s[i+1]) pairs++;
+		}
+
+		if(pairs % 2 == 1) {
+			char x = 'a';
+			if(s[s.size()-1] == 'a') x = 'b';
+			s[s.size()-1] = x;  
+		}
+
+		cout << s << endl;
+	}
 
 	return 0;
 
 }
+
 
 

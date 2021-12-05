@@ -36,9 +36,24 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int a,b,c;
+		a = nxt();
+		b = nxt();
+		c = nxt();
+
+		int r = abs(a + c - 2*b);
+		if(r % 3 == 0) {
+			printf("0\n");
+		} else if(r % 3 == 2 || r % 3 == 1) {
+			printf("1\n");
+		}
+	}
 
 	return 0;
 
 }
+
 
 

@@ -36,9 +36,23 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+		int x;
+		int odd = 0;
+		for(int i=0;i<2*n;i++) {
+			x = nxt();
+			if(x%2==1) odd++;
+		}
+
+		prin(odd);
+		printf("%s\n", odd == n ? "Yes" : "No");
+	}
 
 	return 0;
 
 }
+
 
 

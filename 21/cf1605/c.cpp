@@ -33,12 +33,52 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
-
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		string s;
+		cin >> s;
+
+
+		int res = -1;
+		for(int i=0;i<n-1;i++) {
+			if(s[i] == 'a' && s[i+1] == 'a') {
+				res = 2;
+				goto finish;
+			}
+		}
+
+		for(int i=0;i<n-2;i++) {
+			if(s[i] == 'a' && s[i+2] == 'a') {
+				res = 3;
+				goto finish;
+			}
+		}
+
+		for(int i=0;i<n-3;i++) {
+			if(s[i] == 'a' && s[i+3] == 'a' && s[i+1] != s[i+2]) {
+				res = 4;
+				goto finish;
+			}
+		}
+
+		for(int i=0;i<n-6;i++) {
+			if(s[i] == 'a' && s[i+3] == 'a' && s[i+6] == 'a' && s[i+1] == s[i+2] && s[i+4] == s[i+5] && s[i+1] != s[i+4]) {
+				res = 7;
+				goto finish;
+			}
+		}
+
+		finish:;
+		printf("%d\n", res);
+	}
 
 	return 0;
 
 }
+
 
 

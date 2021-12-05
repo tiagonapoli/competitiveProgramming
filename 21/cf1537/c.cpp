@@ -31,14 +31,55 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-#define N 100100
+#define N 200100
 
+int v[N];
+map<int, int> cnt;
 
 int main () {
+
+	int t = nxt();
+	while(t--) {
+		cnt.clear();
+		int n = nxt();
+		For(i,0,n) {
+			v[i] = nxt();
+			cnt[v[i]]++;
+		}
+
+		sort(v, v+n);
+
+		int mini = v[n-1] - v[0];
+		for(int i=0;i<n-1;i++) {
+			if(v[i+1] - v[i] < mini) mini = v[i+1] - v[i];
+		}
+
+		if(n == 2) {
+			printf("%d %d\n", v[0], v[1]);
+			continue;
+		}
+
+		for(int i=0;i<n-1;i++) {
+			if(v[i+1] - v[i] == mini) {
+				for(int j=i+1;j<n;j++) {
+					printf("%d ", v[j]);
+				}
+
+				for(int j=0;j<=i;j++) {
+					printf("%d ", v[j]);
+				}
+
+				break;
+			}
+		}
+
+		printf("\n");
+	}
 
 
 	return 0;
 
 }
+
 
 

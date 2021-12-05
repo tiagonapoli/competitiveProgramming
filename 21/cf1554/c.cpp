@@ -36,9 +36,45 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+		int m = nxt();
+
+		if(n == 0) {
+			printf("%d\n", m+1);
+			continue;
+		}
+
+
+		int pos = 32 - __builtin_clz(n);
+		int base = 1 << pos;
+
+		int baseMex = (m / base) * base; 
+		m %= base;
+		prin(base);
+		prin(baseMex);
+		prin(m);
+
+		int res = n;
+		while(m > 0) {
+			int nxt = n & (-n);
+			n -= n & (-n);
+			m -= nxt;
+			if(m >= 0) res = n;
+			prin(res);
+			prin(nxt);
+			prin(n);
+			prin(m);
+			sepd();
+		}
+
+		printf("%d\n", baseMex + res);
+	}
 
 	return 0;
 
 }
+
 
 

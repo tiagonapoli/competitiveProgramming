@@ -31,14 +31,35 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-#define N 100100
+#define N 300100
+
+int v[N];
 
 
 int main () {
 
+	for(int i=1;i<N;i++) {
+		v[i] = v[i-1] ^ i;
+	}
+
+	int t = nxt();
+
+	while(t--) {
+		int a = nxt();
+		int b = nxt();
+
+		int x = v[a-1];
+
+		if(x == b) {
+			printf("%d\n", a);
+		} else if((x ^ b) == a) {
+			printf("%d\n", a + 2);
+		} else printf("%d\n", a + 1);
+	}
 
 	return 0;
 
 }
+
 
 

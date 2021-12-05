@@ -33,12 +33,72 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+int lvert[N];
+int lhor[N];
+int px[N];
+int py[N];
+
+pii v[N];
+
+int n, m, k;
+
+int horPos(int x) {
+	return lower_bound(lhor, lhor+n+2, x) - lhor;
+}
+
+int verPos(int x) {
+	return lower_bound(lver, lver+m+2, x) - lver;
+}
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		n = nxt();
+		m = nxt();
+		k = nxt();
+
+		lver[0] = 0;
+		lver[n+1] = 1000000;
+		for(int i=1;i<=n;i++) {
+			lver[i] = nxt();
+		}
+
+		sort(lver, lver+n);
+
+		lhor[0] = 0;
+		lhor[m+1] = 1000000;
+		for(int i=1;i<=m;i++) {
+			lhor[i] = nxt();
+		}
+
+		sort(lhor, lhor+m);
+
+		for(int i=0;i<k;i++) {
+			v[i].fi = nxt();
+			v[i].se = nxt();
+		}
+
+		sort(v, v+k);
+
+		ll res = 0;
+		for(int i=0; i<k;i++) {
+			// primeiro maior ou igual
+			int h = verPos(v[i].fi);
+			if(lvert[h] > v[i].fi) h--;
+			res += i - lower_bound(v, v+k, lvert[h]) - v;
+		}
+
+
+
+		
+
+	}
 
 	return 0;
 
 }
+
 
 

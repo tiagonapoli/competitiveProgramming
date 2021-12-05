@@ -9,7 +9,7 @@ set -euo pipefail
 
 SHA_FILE="./sha.tmp"
 DIFFER_MESSAGE="=== Files differ from before, compiling ==="
-COMPILE_ARGS="-Wall"
+COMPILE_ARGS="-Wall -std=c++17"
 
 if [ "$DEBUG_MODE" == "true" ]; then
 	SHA_FILE="./debug_sha.tmp"

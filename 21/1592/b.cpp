@@ -31,14 +31,44 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-#define N 100100
+#define N 200100
 
+int v[N];
+int aux[N];
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int n,x;
+		n = nxt();
+		x = nxt();
+
+		for(int i=0;i<n;i++) {
+			v[i] = nxt();
+			aux[i] = v[i];
+		}
+
+		if(n >= 2*x) {
+			printf("YES\n");
+			continue;
+		}
+
+		sort(aux, aux+n);
+		for(int i=n-x;i<x;i++) {
+			if(v[i] != aux[i]) {
+				printf("NO\n");
+				goto fim;
+			}
+		}
+
+		printf("YES\n");
+		fim:;
+	}
 
 	return 0;
 
 }
+
 
 

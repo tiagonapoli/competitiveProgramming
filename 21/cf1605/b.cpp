@@ -33,12 +33,48 @@ const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 #define N 100100
 
+string s;
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		cin >> s;
+
+		int zeroes = 0;
+		for(int i=0;i<n;i++) {
+			if(s[i] == '0') {
+				zeroes++;
+			}
+		}
+
+		vector<int> r;
+		for(int i=0;i<zeroes;i++) {
+			if(s[i] == '1') r.pb(i + 1);
+		}
+
+		for(int i=zeroes; i<n;i++) {
+			if(s[i] == '0') r.pb(i+1);
+		}
+
+		if(r.size() == 0) {
+			printf("0\n");
+			continue;
+		}
+
+		printf("1\n%d ", (int)r.size());
+		for(int x : r) {
+			printf("%d ", x);
+		}
+
+		printf("\n");	
+	}
 
 	return 0;
 
 }
+
 
 

@@ -36,9 +36,27 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		string s;
+		cin >> s;
+
+		for(int i=0;i<n-1;i++) {
+			if(s[i] != s[i+1]) {
+				printf("%d %d\n", i+1, i+2);
+				goto success;
+			}
+		}
+
+		printf("-1 -1\n");
+		success:;
+	}
 
 	return 0;
 
 }
+
 
 
