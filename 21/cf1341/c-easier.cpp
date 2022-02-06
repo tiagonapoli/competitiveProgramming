@@ -31,15 +31,59 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int v[N];
+int inv[N];
+bool done[N];
+
+int check(int a, int b) {
+    for(int i=a;i<b-1;i++) {
+        if(v[i+1] != v[i] + 1) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+
+		for(int i=0;i<n;i++) {
+			int x = nxt();
+            v[i] = x;
+			inv[x] = i;
+		}
+
+        int barrier = n;
+        for(int i=1;i<=n;) {
+            if(!check(inv[i], barrier)) {
+                printf("No\n");
+                goto fim;
+            }
+
+            int newBarrier = inv[i];
+            prin(i);
+            prin(barrier);
+            prin(newBarrier);
+            sepd();
+            i += barrier - inv[i];
+            barrier = newBarrier;
+        }
+		
+		printf("Yes\n");
+
+		fim:;
+	}
 
 	return 0;
 
 }
+
 
 

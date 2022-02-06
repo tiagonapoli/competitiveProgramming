@@ -8,14 +8,20 @@ fi
 set -euo pipefail
 
 SHA_FILE="./sha.tmp"
+DEBUG_SHA_FILE="./debug_sha.tmp"
 DIFFER_MESSAGE="=== Files differ from before, compiling ==="
 COMPILE_ARGS="-Wall -std=c++17"
 
 if [ "$DEBUG_MODE" == "true" ]; then
-	SHA_FILE="./debug_sha.tmp"
+	rm -f $SHA_FILE
+	SHA_FILE=$DEBUG_SHA_FILE
 	DIFFER_MESSAGE="=== Files differ from before, compiling in DEBUG MODE ==="
 	COMPILE_ARGS="$COMPILE_ARGS -D DEBUG"
+else 
+	rm -f $DEBUG_SHA_FILE
 fi
+
+
 
 if [ ! -f "$SHA_FILE" ]; then
 	touch "$SHA_FILE"

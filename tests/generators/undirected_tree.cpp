@@ -1,4 +1,5 @@
 #include "bits/stdc++.h"
+#include <sys/time.h>
 using namespace std;
 #ifdef DEBUG
 	const bool debug = 1;
@@ -31,15 +32,51 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int p[N];
+int find(int x) {
+	if(p[x] == x) return x;
+	return p[x] = find(p[x]);
+}
+
+void join(int a, int b) {
+	a = find(a);
+	b = find(b);
+	if(a == b) return;
+	p[b] = a;
+}
 
 int main () {
 
+     struct timeval time; 
+     gettimeofday(&time,NULL);
+
+     // microsecond has 1 000 000
+     // Assuming you did not need quite that accuracy
+     // Also do not assume the system clock has that accuracy.
+     srand((time.tv_sec * 1000) + (time.tv_usec / 1000));
+
+
+	int n = 10;
+    for(int i=0;i<=n;i++) p[i] = i;
+    int k = 1 + (rand() % n);
+	printf("%d %d\n", n, k);
+
+	int cnt = 0;
+	while(cnt < n-1) {
+		int x = 1 + (rand() % n);
+		int y = 1 + (rand() % n);
+		if(find(x) != find(y)) {
+			join(x,y);
+			printf("%d %d\n", x, y);
+            cnt++;
+		}
+	}
 
 	return 0;
 
 }
+
 
 

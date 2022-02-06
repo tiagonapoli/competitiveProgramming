@@ -31,15 +31,41 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int cnt[30];
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		string a, b;
+		cin >> a >> b;
+
+		for(int i=0;i<30;i++) cnt[i] = 0;
+		for(int i=0;i<a.size();i++) {
+			cnt[a[i] - 'a']++;
+		}
+
+		string r;
+		if(b == "abc" && cnt[0] > 0 && cnt[1] > 0 && cnt[2] > 0) {
+			r.insert(r.end(), cnt[0], 'a');
+			r.insert(r.end(), cnt[2], 'c');
+			r.insert(r.end(), cnt[1], 'b');
+			cnt[0] = cnt[1] = cnt[2] = 0;
+		}
+
+		for(int i=0;i<26;i++) {
+			r.insert(r.end(), cnt[i], 'a' + i);
+		}
+
+		cout << r << endl;
+	}
 
 	return 0;
 
 }
+
 
 

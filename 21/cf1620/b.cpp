@@ -31,15 +31,39 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
-
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int w, h;
+		scanf("%d %d", &w, &h);
+
+		vector<ll> hor[2];
+		vector<ll> ver[2];
+		int k = nxt();
+		for(int i=0;i<k;i++) hor[0].pb(nxt());
+		k = nxt();
+		for(int i=0;i<k;i++) hor[1].pb(nxt());
+		k = nxt();
+		for(int i=0;i<k;i++) ver[0].pb(nxt());
+		k = nxt();
+		for(int i=0;i<k;i++) ver[1].pb(nxt());
+
+		ll m = 0;
+		m = max(m, (hor[0].back() - hor[0][0]) * h);
+		m = max(m, (hor[1].back() - hor[1][0]) * h);
+		m = max(m, (ver[0].back() - ver[0][0]) * w);
+		m = max(m, (ver[1].back() - ver[1][0]) * w);
+		printf("%lld\n", m);
+
+	}
 
 	return 0;
 
 }
+
 
 

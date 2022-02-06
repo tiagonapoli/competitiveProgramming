@@ -31,15 +31,48 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int n;
+ll v[N];
+
+ll go(ll k) {
+	ll dmg = 0;
+	for(int i=0;i<n-1;i++) {
+		if(v[i+1] - v[i] >= k) {
+			dmg += k;
+		} else dmg += v[i+1] - v[i];
+	}
+
+	dmg += k;
+	return dmg;
+}
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		n = nxt();
+		ll h;
+		scanf("%lld", &h);
+
+		for(int i=0;i<n;i++) v[i] = nxt();
+
+		ll lo = 1, hi = h;
+		ll m;
+		while(lo < hi) {
+			m = (lo + hi) / 2;
+			if(go(m) >= h) {
+				hi = m;
+			} else lo = m + 1;
+		}
+
+		printf("%lld\n", hi);
+	}
 
 	return 0;
-
 }
+
 
 

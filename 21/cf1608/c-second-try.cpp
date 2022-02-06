@@ -31,15 +31,46 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int res[N];
+int maxpref[N];
+bool biggerEqualThanLastB[N];
+pair<pii, int> v[N];
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+
+		for(int i=0;i<n;i++) res[i] = 0, biggerEqualThanLastB[i] = 0;
+
+		for(int i=0;i<n;i++) v[i].fi.fi = nxt(), v[i].se = i;
+		for(int i=0;i<n;i++) v[i].fi.se = nxt();
+
+		sort(v, v+n);
+
+		for(int i=n-1;i>=0;i--) {
+			biggerEqualThanLastB[i] = v[i].fi.se >= v[n-1].fi.se;
+		}
+
+		bool aux = 0;
+		for(int i=0;i<n;i++) {
+			aux |= biggerEqualThanLastB[i];
+			if(aux) {
+				res[v[i].se] = 1;
+			}
+		}
+
+		for(int i=0;i<n;i++) printf("%d", res[i]);
+		printf("\n");
+	}
 
 	return 0;
 
 }
+
 
 

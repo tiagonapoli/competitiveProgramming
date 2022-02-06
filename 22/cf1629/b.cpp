@@ -37,9 +37,29 @@ inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int l, r, k;
+		scanf("%d %d %d", &l, &r, &k);
+
+		int inRange = r - l + 1;
+		int even = (l % 2) == 0 ? (inRange + 1)/2 : inRange/2;
+		int odd = inRange - even;
+		if(inRange == 1) {
+			printf("%s\n", l == 1 ? "NO" : "YES");
+			continue;
+		}
+
+		prin(inRange);
+		prin(even);
+		sepd();
+		printf("%s\n", k < odd ? "NO" : "YES");
+	}
 
 	return 0;
 
 }
+
 
 

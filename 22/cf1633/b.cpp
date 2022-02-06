@@ -37,9 +37,30 @@ inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		string s;
+		cin >> s;
+
+		int v[2] = {0,0};
+		for(auto el : s) {
+			v[el-'0']++;
+		}
+
+		if(v[0] <= 1 && v[1] <= 1) {
+			printf("0\n");
+			continue;
+		}
+
+		if(v[0] == v[1]) {
+			printf("%d\n", v[0] - 1);
+		} else printf("%d\n", min(v[0], v[1]));
+	}
 
 	return 0;
 
 }
+
 
 

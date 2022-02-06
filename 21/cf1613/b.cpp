@@ -31,15 +31,30 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline int nxtll() { ll x; scanf("%lld", &x); return x; }
-#define N 100100
+#define N 200100
+
+int v[N];
 
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+
+		for(int i=0;i<n;i++) v[i] = nxt();
+
+		sort(v, v+n);
+		int mini = v[0];
+		for(int i=1;i<=n/2;i++) {
+			printf("%d %d\n", v[i], v[0]);
+		}
+	}
 
 	return 0;
 
 }
+
 
 

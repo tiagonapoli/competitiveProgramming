@@ -34,12 +34,38 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int r[N];
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		
+		if(n % 7 == 0) {
+			printf("%d\n", n);
+			continue;
+		}
+
+		if(n < 10) {
+			printf("7\n");
+			continue;
+		}
+
+		int aux = n / 10;
+		for(int i=0;i<10;i++) {
+			int x = (aux * 10 + i);
+			if(x % 7 == 0) {
+				printf("%d\n", x);
+				break;
+			}
+		}
+	}
 
 	return 0;
 
 }
+
 
 

@@ -34,12 +34,33 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+pii a[N];
 
 int main () {
 
+	int t = nxt();
+
+	while(t--) {
+		int n = nxt();
+		int k = nxt();
+		for(int i=0;i<n;i++) a[i].fi = nxt();
+		for(int i=0;i<n;i++) a[i].se = nxt();
+
+		sort(a, a+n);
+
+		int r = k;
+		for(int i=0;i<n;i++) {
+			if(a[i].fi <= r) {
+				r += a[i].se;
+			}
+		}
+
+		printf("%d\n", r);
+	}
 
 	return 0;
 
 }
+
 
 
