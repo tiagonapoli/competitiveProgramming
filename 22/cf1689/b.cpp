@@ -34,12 +34,56 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int v[N];
+int res[N];
 
 int main () {
 
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+
+		set<int> a;
+		for(int i=0;i<n;i++) {
+			v[i]  = nxt();
+			a.insert(i+1);
+		}
+
+
+		if(n == 1) {
+			printf("-1\n");
+			continue;
+		}
+
+		for(int i=0;i<n-1;i++) {
+			auto it = a.begin();
+			if(*it == v[i]) it++;
+			res[i] = *it;
+			a.erase(it);
+		}
+
+		int aux = *a.begin();
+		if(aux == v[n-1]) {
+			res[n-1] = res[n-2];
+			res[n-2] = aux;
+		} else res[n-1] = aux;
+
+
+
+		for(int i=0;i<n;i++) {
+			printf("%d ", res[i]);
+		}
+
+		for(int i=0;i<n;i++) {
+			assert(res[i] != v[i]);
+		}
+
+		printf("\n");
+	}
 
 	return 0;
 
 }
+
 
 

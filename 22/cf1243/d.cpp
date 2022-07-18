@@ -34,12 +34,52 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+map<int, bool> adj[N];
+set<int> notSolved;
+
+void traverseComponent(int x) {
+	if(debug) printf("%d ", x);
+	vector<int> neighbors;
+	for(auto el : notSolved) {
+		if(adj[x].find(el) != adj[x].end()) continue;
+		neighbors.pb(el);
+	}
+
+	for(auto el : neighbors) notSolved.erase(el);
+	for(auto el : neighbors) traverseComponent(el);
+}
 
 int main () {
+
+	int n, m;
+	n = nxt();
+	m = nxt();
+
+	for(int i=1;i<=n;i++) notSolved.insert(i);
+
+	int a,b;
+	for(int i=0;i<m;i++) {
+		a = nxt();
+		b = nxt();
+		adj[a][b] = 1;
+		adj[b][a] = 1;
+	}
+
+	int res = -1;
+	for(int i=1;i<=n;i++) {
+		if(notSolved.find(i) == notSolved.end()) continue;
+		res++;
+		notSolved.erase(i);
+		traverseComponent(i);
+		sepd();
+	}
+
+	printf("%d\n", res);
 
 
 	return 0;
 
 }
+
 
 

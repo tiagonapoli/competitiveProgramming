@@ -31,15 +31,27 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
+inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
 
 int main () {
 
+	int n = nxt();
+	string s;
+	cin >> s;
+	int l, r;
+	l = r = 0;
+	for(int i=0;i<n;i++) {
+		if(s[i] == 'L') l++;
+		else r++;
+	}
+
+	printf("%d\n", l + r + 1);
 
 	return 0;
 
 }
+
 
 

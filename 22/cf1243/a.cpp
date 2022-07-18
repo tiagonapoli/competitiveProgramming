@@ -34,12 +34,36 @@ inline int nxt() { int x; scanf("%d", &x); return x; }
 inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
 
+int v[N];
 
 int main () {
 
+	int k = nxt();
+
+	while(k--) {
+		int n = nxt();
+		for(int i=0;i<n;i++) v[i] = nxt();
+
+		int i;
+			int cnt = 0;
+		for(i=n;i>=1;i--) {
+			cnt = 0;
+			for(int j=0;j<n;j++) {
+				if(v[j] >= i) cnt++;
+				if(cnt >= i) break;
+			}
+
+			if(cnt >= i) break;
+		}
+
+		prin(i);
+		prin(cnt);
+		printf("%d\n", i);
+	}
 
 	return 0;
 
 }
+
 
 

@@ -10,7 +10,7 @@ set -euo pipefail
 SHA_FILE="./sha.tmp"
 DEBUG_SHA_FILE="./debug_sha.tmp"
 DIFFER_MESSAGE="=== Files differ from before, compiling ==="
-COMPILE_ARGS="-Wall -std=c++17"
+COMPILE_ARGS="-Wall -std=c++17 -g -Wshadow -Wextra -Wformat=2 -Wconversion -fsanitize=address,undefined -fno-sanitize-recover"
 
 if [ "$DEBUG_MODE" == "true" ]; then
 	rm -f $SHA_FILE

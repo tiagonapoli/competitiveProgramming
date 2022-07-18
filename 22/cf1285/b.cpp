@@ -31,15 +31,50 @@ const ll MOD = 1000000007;
 const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
-inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
+inline int nxtll() { ll x; scanf("%lld", &x); return x; }
 #define N 100100
+
+int v[N];
+ll s[N];
 
 
 int main () {
+
+	int t = nxt();
+	while(t--) {
+		int n = nxt();
+
+		for(int i=1;i<=n;i++) v[i] = nxt();
+		for(int i=1;i<=n;i++) s[i] = s[i-1] + v[i];
+
+		pii mini = {0,1};
+		ll best = 0;
+		for(int i=1;i<n;i++) {
+			best = max(best, s[i] - s[mini.fi]);
+			if(s[i] < s[mini.fi]) {
+				mini.se = mini.fi;
+				mini.fi = i;
+			} else if(s[i] < s[mini.se]) {
+				mini.se = i;
+			}
+		}
+
+		best = max(best, s[n] - s[mini.se]);
+
+		prinpar(mini);
+		prin(best);
+		prin(s[n]);
+		sepd();
+
+		if(s[n] <= best) {
+			printf("NO\n");
+		} else printf("YES\n");
+	}
 
 
 	return 0;
 
 }
+
 
 

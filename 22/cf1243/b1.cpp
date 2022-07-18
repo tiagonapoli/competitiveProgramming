@@ -37,9 +37,24 @@ inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
 
 int main () {
 
+	int k = nxt();
+
+	while(k--) {
+		int n = nxt();
+		string a,b;
+		cin >> a >> b;
+		vector<int> diff;
+		for(int i=0;i<n;i++) if(a[i] != b[i]) diff.pb(i);
+		if(diff.size() == 0) {
+			printf("YES\n");
+		} else if(diff.size() == 2 && (a[diff[0]] == a[diff[1]] && b[diff[0]] == b[diff[1]])) {
+			printf("YES\n");
+		} else printf("NO\n");
+	}
 
 	return 0;
 
 }
+
 
 

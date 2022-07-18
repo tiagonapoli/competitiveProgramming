@@ -32,60 +32,50 @@ const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
-inline pii nxtpii() { pii x; scanf("%d %d", &x.fi, &x.se); return x; }
-#define N 300100
+#define N 100100
 
-int ver[N], hor[N];
-pii v[N];
-int k;
-
-ll solve(int *lines, int sz) {
-	sort(v, v+k);
-	int j = 0;
-	ll res = 0;
-	map<int,int> repeated;
-	for(int i=0;i<sz-1;i++) {
-		ll cnt = 0;
-		while(j<k && v[j].fi == lines[i]) j++;
-		while(j<k && v[j].fi < lines[i+1]) {
-			repeated[v[j].se]++;
-			j++;
-			cnt++;
-		}
-
-		ll contribution = 0;
-		for(auto &el : repeated) {
-			prinpar(el);
-			contribution -= el.se * (el.se-1) / 2;
-		}
-
-		repeated.clear();
-		contribution += cnt * (cnt - 1) / 2;
-		if(debug) printf("%d->%d: %lld\n", lines[i], lines[i+1], contribution);
-		res += contribution;
-	}
-
-	return res;
-}
+int v[26];
+int k[26];
 
 int main () {
 
 	int t = nxt();
 
 	while(t--) {
-		int n, m;
-		cin >> n >> m >> k;
-		For(i,0,n) ver[i] = nxt();
-		For(i,0,m) hor[i] = nxt();
-		For(i,0,k) v[i] = nxtpii();
-		ll res = solve(ver, n);
-		sepd();
-		For(i,0,k) swap(v[i].fi, v[i].se);
-		res += solve(hor, m);
-		printf("%lld\n", res);
+		int n = nxt();
+
+		for(int i=0;i<26;i++) v[i] = 0;
+		for(int i=0;i<26;i++) k[i] = 0;
+
+		string s;
+		for(int i=0;i<2*n;i++) {
+			cin >> s;
+			for(auto el : s) {
+				v[el-'a']++;
+			}
+		}
+
+		cin >> s;
+		for(auto el : s) {
+			k[el-'a']++;
+		}
+
+		for(int i=0;i<26;i++) v[i] %= 2;
+		for(int i=0;i<26;i++) k[i] %= 2;
+
+		char res = 0;
+		for(int i=0;i<26;i++) {
+			if(k[i] != v[i]) {
+				assert(res == 0);
+				res = 'a' + i;
+			}
+		}
+
+		printf("%c\n", res);
 	}
 
 	return 0;
+
 }
 
 

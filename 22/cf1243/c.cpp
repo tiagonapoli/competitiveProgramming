@@ -32,14 +32,44 @@ const double PI = acos(-1.0);
 const double eps = 1e-9;
 inline int nxt() { int x; scanf("%d", &x); return x; }
 inline ll nxtll() { ll x; scanf("%lld", &x); return x; }
-#define N 100100
+#define N 1001000
+
+vector<ll> p;
+int c[N];
+
+void sieve() {
+	for(int i=2;i<N;i++) {
+		if(c[i] == 0) p.pb(i);
+		for(int j=i;j<N;j+=i) c[j] = 1;			
+	}
+}
 
 
 int main () {
 
+	sieve();
+
+	ll n = nxtll();
+
+	if(n == 1) {
+		printf("1\n");
+		return 0;
+	}
+
+	vector<ll> f;
+	for(auto el : p) {
+		if(n % el == 0) f.pb(el);
+		while(n % el == 0) n /= el;
+	}
+
+	if(n > 1) f.pb(n);
+
+	if(f.size() > 1) {
+		printf("1\n");
+	} else printf("%lld\n", f[0]);
 
 	return 0;
-
 }
+
 
 
