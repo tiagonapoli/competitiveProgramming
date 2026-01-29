@@ -25,5 +25,23 @@ namespace DotnetTester
         {
             return Random.Shared.Next(minInclusive, maxExclusive);
         }
+
+        /// <summary>
+        /// Generates a random grid (2D list) of integers with specified dimensions and value range
+        /// </summary>
+        public static List<List<int>> GenerateRandomGrid(int rows, int cols, int minValue, int maxValue)
+        {
+            var grid = new List<List<int>>(rows);
+            for (int i = 0; i < rows; i++)
+            {
+                var row = new List<int>(cols);
+                for (int j = 0; j < cols; j++)
+                {
+                    row.Add(GenerateRandomInt(minValue, maxValue));
+                }
+                grid.Add(row);
+            }
+            return grid;
+        }
     }
 }

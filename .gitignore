@@ -4,3 +4,5 @@
 **/TestResults
 **/obj/
 **/bin/
+**/out
+**/.vs
